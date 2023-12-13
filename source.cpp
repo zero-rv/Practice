@@ -11,7 +11,7 @@ void nhapArr(int arr[], int n)
 
 int main()
 {
-	int x, a, b, m = 0, n = 0, max = 0;
+	int x, a, b, m = 0, n = 0;
 	int cl[100], pr[100];
 	cout << "Nhap so du: ";
 	cin >> x;
@@ -25,18 +25,16 @@ int main()
 	nhapArr(pr, b);
 	m = cl[0];
 	n = pr[0];
-	//max = m + n;
 	for (int i = 0; i < a; i++)
 	{
 		for (int j = 0; j < b; j++)
 		{
-			if ((cl[i] + pr[j]) > max)
+			if ((cl[i] + pr[j]) > (m + n))
 			{
 				if ((cl[i] + pr[j]) <= x)
 				{
 					m = cl[i];
 					n = pr[j];
-					max = cl[i] + pr[j];
 				}
 			}
 		}
