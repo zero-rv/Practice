@@ -61,21 +61,21 @@ int main()
 		cout << endl;
 	}
 
-	n--;
-
 	for (int i = 1; i <= n; i++)
 	{
-		cout << "  ";
-		for (int j = 1; j < i; j++)
-			cout << "  ";
-		for (int j = i; j <= n; j++)
+		if (i != 1)
 		{
-			if (j == i || j == n)
-				cout << "*   ";
-			else
-				cout << "    ";
+			for (int j = 1; j < i; j++)
+				cout << "  ";
+			for (int j = i; j <= n; j++)
+			{
+				if (j == i || j == n)
+					cout << "*   ";
+				else
+					cout << "    ";
+			}
+			cout << endl;
 		}
-		cout << endl;
 	}
 
 	cout << endl;
