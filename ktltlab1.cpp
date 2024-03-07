@@ -10,13 +10,13 @@ void input(string s, int& n);
 
 int main()
 {
-	back:
+back:
 	cout << "Switch: ";
 	int x;
 	cin >> x;
 	switch (x)
 	{
-	case 10: 
+	case 10:
 		b10();
 		goto back;
 	case 11:
@@ -41,7 +41,7 @@ void input(string s, int& n)
 
 void b10()
 {
-	int n, arr[10][10] = {0}, value = 1;
+	int n, arr[10][10] = { 0 }, value = 1;
 	do
 	{
 		input("Nhap do dai mang nxn (2 <= n <= 10): ", n);
@@ -135,9 +135,31 @@ void b11()
 	cout << endl;
 }
 
+//POINTER ARRAY
+void addElement(string* &arr, int& size, string new_value)
+{
+	//Create new array using pointer
+	int new_size = size + 1;
+    string* new_array = new string[new_size];
+	//Copy current array to new array
+	for (int i = 0; i < size; i++)
+	{
+		new_array[i] = arr[i];
+	}
+	//Add a new element to the last index of new array
+	new_array[new_size - 1] = new_value;
+	//Assign new array to current array
+	delete[] arr;
+	arr = new_array;
+	//Assign new size to current size
+	size = new_size;
+}
+
 void b12()
 {
 	char seats[13][6];
+	int size = 0;
+	string *booked_tickets = new string[size];
 	int row = -1, col = -1;
 	for (int i = 0; i < 13; i++)
 	{
@@ -164,7 +186,7 @@ _menu1:
 	switch (select)
 	{
 	case 1: //Dat cho ngoi
-		_menu2:
+	_menu2:
 		system("cls");
 		cout << "|---------- Chon loai ve ----------|" << endl;
 		cout << "|1. Thuong gia                     |" << endl;
@@ -175,7 +197,7 @@ _menu1:
 		cout << "|----------------------------------|" << endl;
 		cout << "Select: ";
 		cin >> select;
-		switch(select)
+		switch (select)
 		{
 		case 1:
 			cout << endl << "         A  B  C  D  E  F" << endl;
@@ -234,16 +256,16 @@ _menu1:
 			goto _menu2;
 		}
 
-		_input_seat_again:
+	_input_seat_again:
 		cout << "Chon cho ngoi: " << endl;
 		cout << "_Chon cot (1 -> A ... 6 -> F): ";
 		cin >> col;
 		cout << "_Chon hang: ";
 		cin >> row;
-		
+
 		switch (select)
 		{
-		case 1:
+		case 1: //Dat cho ngoi
 			if (row < 1 || row > 2 || col < 1 || col > 6)
 			{
 				cout << "Cho ngoi khong hop le! Chon lai!" << endl;
@@ -265,8 +287,10 @@ _menu1:
 			}
 			break;
 		}
-		seats[row - 1][col - 1] = '*';
+		seats[row - 1][col - 1] = 'R';
+		addElement(booked_tickets, size, (char)(col + 64) + to_string(row));
 		cout << "Dat cho thanh cong!" << endl;
+
 		system("pause");
 		goto _menu1;
 	case 2: //Xem cho ngoi
@@ -288,12 +312,21 @@ _menu1:
 		system("pause");
 		goto _menu1;
 	case 3:
+		if (size == 0)
+			cout << "Ban chua dat ve!" << endl;
+		else
+		{
+			for (int i = 0; i < size; i++)
+			{
+				cout << "Ve " << i + 1 << ": " << booked_tickets[i] << endl;
+			}
+		}
+		system("pause");
 		goto _menu1;
 	case 0:
 		return;
 	default:
 		goto _menu1;
 	}
-	
-}
 
+}
