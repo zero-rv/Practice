@@ -154,7 +154,7 @@ int* specific_RC_Arr(int** arr, int r, int c, int &new_size, bool(*condition)(in
 			if (condition(arr[specific][j]))
 				new_size++;
 
-		result = new int[new_size] {0};
+		result = new int[new_size];
 
 		for (int j = 0; j < c; j++)
 		{
@@ -178,7 +178,7 @@ int* specific_RC_Arr(int** arr, int r, int c, int &new_size, bool(*condition)(in
 			if (condition(arr[i][specific]))
 				new_size++;
 
-		result = new int[new_size] {0};
+		result = new int[new_size];
 
 		for (int i = 0; i < r; i++)
 		{
