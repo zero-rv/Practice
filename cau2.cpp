@@ -20,7 +20,7 @@ void removeElement(int*& arr, int& size);
 bool asc(int a, int b);
 bool desc(int a, int b);
 void sort(int* arr, int begin, int end, bool(*condition)(int, int));
-void concat(int* &arrA, int &sizeA, int* arrB, int &sizeB);
+int* concat(int* arrA, int sizeA, int* arrB, int sizeB);
 
 int main()
 {
@@ -87,13 +87,14 @@ int main()
 	cin >> sizeB;
 	int* arrB = new int[sizeB];
 	inputRandIntArr(arrB, sizeB);
-	//Gop mang
-	concat(arr, size, arrB, sizeB);
 	cout << "Mang ngau nhien duoc tao: "; printArr(arrB, sizeB);
-	cout << "\nMang sau khi gop: "; printArr(arr, size);
+	//Gop mang
+	int* new_arr = concat(arr, size, arrB, sizeB);
+	int new_size = size + sizeB;
+	cout << "\nMang sau khi gop: "; printArr(new_arr, new_size);
 	//Gop mang va tang dan
-	sort(arr, 0, size - 1, asc);
-	cout << "\nMang sau khi gop va tang dan: "; printArr(arr, size);
+	sort(new_arr, 0, new_size - 1, asc);
+	cout << "\nMang sau khi gop va tang dan: "; printArr(new_arr, new_size);
 
 	delete[] arr;
 	delete[] arrB;
@@ -279,7 +280,7 @@ void sort(int* arr, int begin, int end, bool(*condition)(int, int))
 	}
 }
 
-void concat(int* &arrA, int &sizeA, int* arrB, int &sizeB)
+int* concat(int* arrA, int sizeA, int* arrB, int sizeB)
 {
 	int i = 0, count = 0;
 	int new_size = sizeA + sizeB;
@@ -292,7 +293,5 @@ void concat(int* &arrA, int &sizeA, int* arrB, int &sizeB)
 		while (count < new_size)
 			new_arr[count++] = arrB[i++];
 	}
-	delete[] arrA;
-	arrA = new_arr;
-	sizeA = new_size;
+	return new_arr;
 }
