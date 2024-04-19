@@ -62,7 +62,7 @@ int main()
 	cout << "\nNhap so cot, tra ve mang cac phan tu tren cot giam di 1:\n";
 	int sizeC_change = 0, change_value = -1;
 	int* specificC_change = change_per_index(specific_RC_Arr(arr, r, c, sizeC_change, defaultCondition, 'c'), sizeC_change, change_value);
-	cout << "Cac phan tu : "; printArr(specificC_change, sizeC_change);
+	cout << "Cac phan tu cua cot sau khi giam 1: "; printArr(specificC_change, sizeC_change);
 	//Giai phong
 	for (int i = 0; i < r; i++)
 		delete[] arr[i];
@@ -140,7 +140,7 @@ int* findIndex(int** arr, int r,int c, bool(*condition)(int))
 int* specific_RC_Arr(int** arr, int r, int c, int &new_size, bool(*condition)(int), char rc)
 {
 	int specific, index = 0, count = 0;
-	int* result = new int[1] {0};
+	int* result = nullptr;
 	if (rc == 'r')
 	{
 		do
@@ -154,7 +154,6 @@ int* specific_RC_Arr(int** arr, int r, int c, int &new_size, bool(*condition)(in
 			if (condition(arr[specific][j]))
 				new_size++;
 
-		delete[] result;
 		result = new int[new_size] {0};
 
 		for (int j = 0; j < c; j++)
@@ -179,7 +178,6 @@ int* specific_RC_Arr(int** arr, int r, int c, int &new_size, bool(*condition)(in
 			if (condition(arr[i][specific]))
 				new_size++;
 
-		delete[] result;
 		result = new int[new_size] {0};
 
 		for (int i = 0; i < r; i++)
