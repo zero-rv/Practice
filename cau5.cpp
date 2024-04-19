@@ -2,6 +2,10 @@
 #include <math.h>
 using namespace std;
 
+int* A;//Tap A tu 1 den n
+int* mark;//Danh dau so duoc chon (0: chua | 1: roi)
+int n;
+void hoanvi(int i);
 void inputIntArr(int*& arr, int size);
 void printArr(int* arr, int size);
 double giaithua(double n);
@@ -64,10 +68,17 @@ int main()
 	//Tang dan
 	sort(arr, size - 1, asc);
 	cout << "\nMang sau khi sap xep tang dan: "; printArr(arr, size);
-
+	//Hoan vi:
+	cout << "\nNhap n phan tu muon hoan vi cua A, tu 1 den n: "; cin >> n;
+	A = new int[n];
+	mark = new int[n] {0};
+	cout << "\nCo tat ca " << giaithua(n) << " hoan vi cua A:\n";
+	hoanvi(0);
 
 	delete[] arr;
-	arr = nullptr;
+	delete[] A;
+	delete mark;
+	arr = A = mark = nullptr;
 	return 0;
 }
 
@@ -85,6 +96,7 @@ void printArr(int* arr, int size)
 	{
 		cout << arr[i] << "  ";
 	}
+	cout << endl;
 }
 
 double giaithua(double n)
@@ -162,4 +174,23 @@ void sort(int* &arr, int current_index, bool(*condition)(int, int))
 		}
 	}
 	sort(arr, current_index - 1, condition);
+}
+
+void hoanvi(int i)
+{
+	if (i == n)
+		printArr(A, n);
+	else
+	{
+		for (int k = 1; k <= n; k++)
+		{
+			if (mark[k - 1] == 0)
+			{
+				A[i] = k;
+				mark[k - 1] = 1;
+				hoanvi(i + 1);
+				mark[k - 1] = 0;
+			}
+		}
+	}
 }
