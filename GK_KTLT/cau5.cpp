@@ -8,7 +8,6 @@ int n, k, node = 1;
 void chinhhop(int i, int n, int k);
 void inputIntArr(int*& arr, int size);
 void printArr(int* arr, int size);
-void printArr_List(int* arr, int size);
 double giaithua(double n);
 double s1(double n, double x);
 double s2(double n);
@@ -109,16 +108,6 @@ void inputIntArr(int*& arr, int size)
 
 void printArr(int* arr, int size)
 {
-	for (int i = 0; i < size; i++)
-	{
-		cout << arr[i] << "  ";
-	}
-	cout << endl;
-}
-
-void printArr_List(int* arr, int size)
-{
-	int node = 1;
 	for (int i = 0; i < size; i++)
 	{
 		cout << arr[i] << "  ";
