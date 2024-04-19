@@ -57,10 +57,12 @@ int main()
 		cout << "\nMang khong co so nguyen to.";
 	//Dia chi so CP dau tien
 	int* firstCP = findIndex(arr, size, isCP, 1);
-	cout << "\nDia chi so CP dau tien trong mang: " << firstCP;
+	if(firstCP)
+		cout << "\nDia chi so CP dau tien trong mang: " << firstCP;
 	//Dia chi so hoan thien cuoi cung
 	int* lastSohoanthien = findIndex(arr, size, isSohoanthien, 0);
-	cout << "\nDia chi so hoan thien cuoi cung trong mang: " << lastSohoanthien;
+	if(lastSohoanthien)
+		cout << "\nDia chi so hoan thien cuoi cung trong mang: " << lastSohoanthien;
 	//Dia chi so nho nhat dau tien
 	int* firstMin = findIndex(arr, size, findMin, 1);
 	cout << "\nDia chi so nho nhat dau tien trong mang: " << firstMin;
