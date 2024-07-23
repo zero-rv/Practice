@@ -1,0 +1,74 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .begin {
+    background-image: url(../img/bg.jpg);
+}
+
+header input[type=text] {
+    padding: 2px;
+}
+
+div.ads > div {
+    width: 180px;
+    height: 120px;
+    margin: 2px;
+    border: 2px dashed red;
+    text-align: center;
+    color: lightcoral;
+    line-height: 120px;
+}
+
+.left {
+    width: 20%;
+    height: 180px;
+}
+
+.right {
+    width: 80%;
+    height: 180px;
+    background-color: lightgray;
+}
+
+.menu {
+    display: flex;
+    background-color: aqua;
+}
+
+.menu > li {
+    list-style-type: none;
+    border-left: 2px solid blue;
+}
+
+.menu li:first-child {
+    border: none;
+}
+
+.menu > li > a {
+    display: block;
+    padding: 1rem;
+
+    text-decoration: none;
+    color: blue;
+    user-select: none;
+}
+
+.menu > li > a:hover {
+    background-color: blue;
+    color: white;
+}
+
+.left>ul>li>a {
+    display: block;
+    padding: 1rem;
+    background:linear-gradient(white, lightblue);
+}
+
